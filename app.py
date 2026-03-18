@@ -5,7 +5,19 @@ import joblib
 # ===============================
 # โหลดโมเดล
 # ===============================
-model = joblib.load("model_artifacts/student_model.pkl")
+import os
+import gdown
+
+# ===============================
+# โหลดโมเดลจาก Google Drive
+# ===============================
+model_path = "student_model.pkl"
+
+if not os.path.exists(model_path):
+    url = "https://drive.google.com/uc?id=16UPjHRUkyNNFuYWcq_RthWNYH57bfjYY"
+    gdown.download(url, model_path, quiet=False)
+
+model = joblib.load(model_path)
 
 # ===============================
 # CONFIG PAGE
